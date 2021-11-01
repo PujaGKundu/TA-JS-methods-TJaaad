@@ -36,11 +36,7 @@ fruits.unshift('Dragon Fruit');
 
 // Log true or false based on the value at index 0 and 1 is 'Dragon Fruit' and 'Guava' or not
 
-if(fruits.indexOf('Dragon Fruit') === 0) console.log(true);
-else console.log(false);
-
-
-if(fruits.indexOf('Guava') === 1) console.log(true);
+if(fruits.indexOf('Dragon Fruit') === 0 && fruits.indexOf('Guava') === 1) console.log(true);
 else console.log(false);
 
 // Update the value of index 1 to `Pears`
@@ -53,7 +49,7 @@ fruits.splice(1, 0, 'Kiwi', 'Lemon');
 
 // Remove (slice) all the element from index 5
 
-fruits.splice(5, 8);
+fruits.slice(5);
 
 // Create another array named moreFruits with values ['Berries', 'Melons']
 
@@ -175,14 +171,8 @@ console.log(value.reverse());
 
 // Join all fruits with '-', convert to uppercase and log it
 
-let newList = uppercaseFruits.reduce((acc, num) => {
-    return num + acc;
-  }, "-");
-console.log(newList);
+console.log(fruit.join("-").toUpperCase());
 
 // Join all fruits with '&', convert to lowercase and log it
 
-let newList1 = lowercaseFruits.reduce((acc, num) => {
-    return num + acc;
-  }, "&");
-console.log(newList1);
+console.log(fruit.join("&").toLowerCase());
