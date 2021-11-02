@@ -11,7 +11,7 @@ let indexOfIs = quote.indexOf('is');
 /*
 2. Find the character at the index indexOfIs (Problem 1) in quote.
 */
-indexOfIs.charAt();
+quote.charAt(indexOfIs);
 /*
 3. Log the message saying `The index of first is in quote is 7`
 */
@@ -26,7 +26,7 @@ console.log(`The index of first is in quote is ${indexOfIs}`);
   The character at index 5 is ' '
 */
 for (let i = 0; i > 6; i++) {
-  console.log(`The character at index ${i} is '${quote.charAt(i)}'`);
+  console.log(`The character at index ${i} is '${quote[i]}'`);
 }
 /*
 5. Using the variable from , to and quote variable dispaly this message
@@ -54,11 +54,13 @@ console.log(quote.indexOf("we"));
 /*
 10. Split the quote into individual word and store it in a variable name quoteSplitted
 */
-var quoteSplitted = quote.split();
+var quoteSplitted = quote.split(' ');
 /*
 11. Change the word "today" in quoteSplitted to "tomorrow" and join all the words to form a sentance.
 */
-console.log(quote.replace("today", "tomorrow"));
+let index = quoteSplitted.indexOf('today');
+quoteSplitted[index] = "tomorrow";
+quoteSplitted.join(" ");
 /*
 12. Find the index of second "o" in quote. Use indexOf
 */
@@ -80,7 +82,9 @@ console.log(quote.padEnd(70, '.'));
 /*
 16. Do same as (15) but the ... should come in start. Store the output in a new variable
 */
-let quoteTo = quote.padStart(15, '.');
+let max = 70;
+let length = quote.length;
+let newStartWuote = ".".repeat(max - length) + quote;
 /*
 17. Log the repeat of "Hello World!" 10 times.
 */
@@ -96,7 +100,7 @@ console.log(to.replace("Stark", "Lannister"));
 /*
 20. Make the quote of length 30 and put ... at the end. (use slice)
 */
-console.log(quote.slice(0, 30));
+let limit = quote.slice(0, 30) + "...";
 /*
 21. Find out does quote, from, to starts with "A"
 */
