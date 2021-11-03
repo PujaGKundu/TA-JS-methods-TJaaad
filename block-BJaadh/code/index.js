@@ -11,35 +11,64 @@ Clone the array before using sort method: [...arr]
 */
 
 // - Find the index of `101` in numbers
-
+console.log(numbers.indexOf(101));
 // - Find the last index of `9` in numbers
-
+console.log(numbers.lastIndexOf(9));
 // - Convert value of strings array into a sentance like "This is a collection of words"
-
+console.log(strings.join(" "));
 // - Add two new words in the strings array "called" and "sentance"
-
+let newString = [...strings];
+newString.push("called", "sentance");
 // - Again convert the updated array (strings) into sentance like "This is a collection of words called sentance"
-
+console.log(newString.join(" "));
 // - Remove the first word in the array (strings)
-
+let removeString = [...strings];
+removeString.shift();
 // - Find all the words that contain 'is' use string method 'includes'
-
+function is(string) {
+  if (string.includes('is')) return string;
+}
+let isPresent = strings.filter(is);
 // - Find all the words that contain 'is' use string method 'indexOf'
-
+function is(string) {
+  if (string.includes('is')) return string.indexOf('is');
+}
+let isPresentIndex = strings.filter(is);
 // - Check if all the numbers in numbers array are divisible by three use array method (every)
-
+let divisibleBy3 = numbers.every(function (number) {
+  return number % 2 === 0;
+});
 // -  Sort Array from smallest to largest
-
+let sorts = [...numbers];
+function compareFunction(a, b) {
+  return a - b;
+}
+sorts.sort(compareFunction);
 // - Remove the last word in strings
-
+let pops = [...strings];
+pops.pop();
 // - Find largest number in numbers
-
+let largestNum = numbers.reduce((acc, num) => {
+  if (acc > num) {
+    return acc;
+  }
+}, 0);
 // - Find longest string in strings
-
+let largestString = strings.reduce((acc, num) => {
+  if (acc.length > num.length) {
+    return acc;
+  }
+}, " ");
 // - Find all the even numbers
-
+function isEven(num) {
+  return num % 2 === 0;
+}
+let evenNumbers = numbers.filter(isEven);
 // - Find all the odd numbers
-
+function isOdd(num) {
+  return num % 2 !== 0;
+}
+let oddNumbers = numbers.filter(isOdd);
 // - Place a new word at the start of the array use (unshift)
 
 // - Make a subset of numbers array [18,9,7,11]
