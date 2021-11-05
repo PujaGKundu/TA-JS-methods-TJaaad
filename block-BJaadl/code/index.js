@@ -11,21 +11,14 @@ let words = [
 
 // - Write a function findLongestWord that takes an array of words and returns the longest word from the array. (Use above array "words" to test it). If there are 2 with the same length, it should return the first occurrence.
 
-let string = words[0];
 function findLongestWord(word) {
-  if (string.length < word.length) {
-    string = word;
-  }
-  console.log(string);
+  return [...word].sort((a, b) => a.length - b.length)
 }
-let longestWord = words.forEach(findLongestWord);
+findLongestWord(words);
 
 // - Convert the above array "words" into an array of length of word instead of word.
 
-function arrayLength(word) {
-  console.log (word.length);
-}
-let lengthOfWord = words.forEach(arrayLength);
+let lengthOfWord = words.mao((w) => w.length);
 
 // - Create a new array that only contains word with atleast one vowel.
 
@@ -110,7 +103,7 @@ let evenOdd = numbers.map(oddEven);
 // - Sort the above number in assending order.
 
 function compareFumction (a, b) {
-  return a -b;
+  return a - b;
 }
 let sorting = [...numbers].sort(compareFumction);
 
@@ -120,19 +113,19 @@ let sorting = [...numbers].sort(compareFumction);
 
 // - Find the sum of the numbers in the array.
 
-let sum = 0;
-function sumArray(number) {
-  sum = sum + number;
-  return sum;
-}
-numbers.map(sumArray);
+let sum = numbers.reduce((acc, cv) => {
+  acc = acc + cv;
+  return acc;
+}, 0);
 
 //- Write a function averageNumbers that receives an array of numbers and calculate the average of the numbers
 
-function average(number) {
-  console.log (sum / number.length);
+function averageNumbers(number) {
+  return number.reduce((acc, cv) => {
+    acc = acc + cv;
+    returnacc;
+  }, 0) / number.length;
 }
-let ave = numbers.forEach(average);
 
 let strings = [
   'seat',
@@ -149,10 +142,8 @@ let strings = [
 
 // - Write a function averageWordLength that receives an array of words2 and calculate the average length of the words.
 
-let total = 0;
-let arrayLen = strings.length;
-function averageWordLength(words2) {
-  total += words2.length;
-  console.log(total / arrayLen);
+function averageWordLength(words) {
+  return words.map ((w) => w.length).reduce((acc, cv) => {
+    return acc + cv;
+  }, 0) / words.length;
 }
-strings.forEach(averageWordLength);
