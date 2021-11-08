@@ -2,14 +2,30 @@
 
 function countAllPeople() {
   // your code goes here
+  got.houses.reduce((acc, cv) => {
+    acc = acc + cv.people.length;    
+  }, 0);
+  return acc;
 }
+
 
 function peopleByHouses() {
   // your code goes here
+  got.houses.reduce((acc, cv) => {
+    acc[house.name] = cv.people.length;
+  }, {});
+  return acc;
+
+
 }
 
 function everyone() {
   // your code goes here
+  got.houses.forEach((acc, cv) => {
+    let peopleName = house.people.map((person) => person.name);
+    acc = acc.concat[cv(peopleName)];
+  }, []);
+  return acc;
 }
 
 function nameWithS() {
