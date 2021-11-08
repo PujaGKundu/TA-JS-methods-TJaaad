@@ -56,9 +56,9 @@ let averageFemaleGrade = gradeFemaleTotal / femaleSex.length;
 
 // Find the highest grade for people whose name starts with 'J' or 'P'
 
-let nameGrade = persons.filter((person) => person.name.startsWith("J") || person.name.startsWith("P"));
-let nameHighGrade = nameGrade.map((person) => person.grade);
-[...nameHighGrade].sort((a, b) => a - b).pop();
+let nameGrade = persons.filter((person) => person.name.startsWith("J") || person.name.startsWith("P"))
+.map((person) => person.grade)
+.sort((a, b) => a - b).pop();
 
 
 
@@ -85,6 +85,18 @@ Output:
 {banana: 2, cherry: 3, orange: 3, apple: 2, fig: 1}
 */
 
+let fruitObj = fruitBasket.reduce((acc, cv) => {
+  if(acc[cv]) {
+    acc[cv] = acc[cv] + 1;
+  } else {
+    acc[cv] = 1;
+  }
+  return acc;
+}, {})
+
+
+
+
 /* 
 
 Use the fruitBasket array to create an array of array. Each array will contain two values name of fruit and number of times
@@ -95,6 +107,19 @@ Output:
 [['banana', 2], ['cherry', 3], ['orange', 3], ['apple', 2], ['fig', 1]]
 */
 
+let fruitsArray = Object.keys(fruitObj).reduce((acc, cv) => {
+  acc = acc.concat([[cv, fruitObj[cv]]]);
+  return acc;
+}, []);
+
+
+
+
+
+
+
+
+
 const data = [
   [1, 2, 3],
   [4, 5, 6],
@@ -104,11 +129,10 @@ const data = [
 
 // Using reduce flat data array
 
-let flatData = data.flat(Infinity);
-flatData.reduce((acc, cv) => {
-  acc = acc + cv;
+data.reduce((acc, cv) => {
+  acc = acc.concat(cv);
   return acc;
-}, 0);
+}, []);
 
 
 const dataTwo = [
@@ -120,11 +144,10 @@ const dataTwo = [
 
 // Using reduce flat dataTwo array
 
-let flatDataTwo = dataTwo.flat(Infinity);
-flatDataTwo.reduce((acc, cv) => {
-  acc = acc + cv;
+dataTwo.reduce((acc, cv) => {
+  acc = acc.concat(cv.flat(Infinity));
   return acc;
-}, 0);
+}, []);
 
 /*
 
@@ -136,37 +159,31 @@ Create these functions which accepts a number value and returns a number value:
   - `half` converts the value to half and return the integer value not decimal (use Math.round(21.5) => 21)
 */
 
-let values = [12, 25, 35, 64, 95, 75, 65, 35, 85, 75, 91];
 
 // `increment` adds one to the input value
 function increment(value) {
   return value + 1;
 }
-let incrementMap = values.map(increment);
 
 // `double` doubles the input value
 function double(value) {
-  console.log(value * 2);
+  return value * 2;
 }
-let doubleForEach = values.forEach(double);
 
 // `decrement` decrement 1 from the value 
 function decrement(value) {
   return value - 1;
 }
-let decrementMap = values.map(decrement);
 
 // `triple` triples the input 
 function triple(value) {
-  console.log(value * 3);
+  return value * 3;
 }
-let tripleForEach = values.forEach(triple);
 
 //`half` converts the value to half and return the integer value not decimal (use Math.round(21.5) => 21)
 function half(value) {
   return Math.round(value / 2);
 }
-let halfMap = values.map(half);
 
 
 
@@ -197,6 +214,12 @@ EXAMPLE:
   ...
 */
 
+pipeline.reduce((acc, cv) => {
+  acc = cv(acc);
+  return acc;
+}, 3);
+
+
 let pipeline2 = [
   increment,
   half,
@@ -212,3 +235,8 @@ let pipeline2 = [
 ];
 
 // Find the output using pipeline2 the initial value if 8
+
+pipeline2.reduce((acc, cv) => {
+  acc = cv(acc);
+  return acc;
+}, 8);
