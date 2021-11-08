@@ -2,50 +2,67 @@
 
 function countAllPeople() {
   // your code goes here
-  got.houses.reduce((acc, cv) => {
-    acc = acc + cv.people.length;    
+  return got.houses.reduce((acc, cv) => {
+    acc = acc + cv.people.length; 
+    return acc;   
   }, 0);
-  return acc;
 }
 
 
 function peopleByHouses() {
   // your code goes here
-  got.houses.reduce((acc, cv) => {
-    acc[house.name] = cv.people.length;
+  return got.houses.reduce((acc, house) => {
+    acc[house.name] = house.people.length;
+    return acc;
   }, {});
-  return acc;
-
-
 }
 
 function everyone() {
   // your code goes here
-  got.houses.forEach((acc, cv) => {
-    let peopleName = house.people.map((person) => person.name);
-    acc = acc.concat[cv(peopleName)];
+  return got.houses.reduce((acc, house) => {
+    acc = acc.concat(house.people.map(p => p.name));
+    return acc;
   }, []);
-  return acc;
 }
 
 function nameWithS() {
   // your code goes here
+  return got.houses.reduce((acc, house) => {
+    acc = acc.concat(house.people.map(p => p.name).filter(name => name.toLowerCase().includes("s")));
+    return acc;
+  }, []);
 }
 
 function nameWithA() {
   // your code goes here
+  return got.houses.reduce((acc, house) => {
+    acc = acc.concat(house.people.map(p => p.name).filter(name => name.toLowerCase().includes("a")));
+    return acc;
+  }, []);
 }
 
 function surnameWithS() {
   // your code goes here
+  return got.houses.reduce((acc, house) => {
+    acc = acc.concat(house.people.map(p => p.name).filter(name => name.split(" ")[1].toLowerCase().includes("s")));
+    return acc;
+  }, []);
 }
 
 function surnameWithA() {
   // your code goes here
+  return got.houses.reduce((acc, house) => {
+    acc = acc.concat(house.people.map(p => p.name).filter(name => name.split(" ")[1].toLowerCase().includes("a")));
+    return acc;
+  }, []);
 }
 
 function peopleNameOfAllHouses() {
   // your code goes here
+  return got.houses.reduce((acc, house) => {
+    acc[house.name] = house.people.map(p => p.name);
+    return acc;
+  }, {});
 }
 
 // Testing your result after writing your function
