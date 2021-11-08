@@ -17,17 +17,50 @@ let persons = [
 
 // Find the average grade
 
+let peopleGrade = persons.map((person) => person.grade);
+let gradeTotal = peopleGrade.reduce((acc, cv) => {
+  acc = acc + cv;
+  return acc;
+}, 0);
+let averageGrade = gradeTotal / peopleGrade.length;
+
 // Find the average grade of male
+
+let maleSex = persons.filter((person) => person.sex === "M");
+let gradeMaleTotal = maleSex.reduce((acc, cv) => {
+  acc = acc + cv.grade;
+  return acc;
+}, 0);
+let averageMaleGrade = gradeMaleTotal / maleSex.length;
 
 // Find the average grade of female
 
+let femaleSex = persons.filter((person) => person.sex === "F");
+let gradeFemaleTotal = femaleSex.reduce((acc, cv) => {
+  acc = acc + cv.grade;
+  return acc;
+}, 0);
+let averageFemaleGrade = gradeFemaleTotal / femaleSex.length;
+
 // Find the highest grade
+
+[...peopleGrade].sort((a, b) => a - b).pop();
 
 // Find the highest grade in male
 
+[...maleSex].sort((a, b) => a.grade - b.grade).pop();
+
 // Find the highest grade in female
 
+[...femaleSex].sort((a, b) => a.grade - b.grade).pop();
+
 // Find the highest grade for people whose name starts with 'J' or 'P'
+
+let nameGrade = persons.filter((person) => person.name.startsWith("J") || person.name.startsWith("P"));
+let nameHighGrade = nameGrade.map((person) => person.grade);
+[...nameHighGrade].sort((a, b) => a - b).pop();
+
+
 
 const fruitBasket = [
   'banana',
@@ -71,6 +104,13 @@ const data = [
 
 // Using reduce flat data array
 
+let flatData = data.flat(Infinity);
+flatData.reduce((acc, cv) => {
+  acc = acc + cv;
+  return acc;
+}, 0);
+
+
 const dataTwo = [
   [1, 2, 3],
   [4, 5, 6],
@@ -79,6 +119,12 @@ const dataTwo = [
 ];
 
 // Using reduce flat dataTwo array
+
+let flatDataTwo = dataTwo.flat(Infinity);
+flatDataTwo.reduce((acc, cv) => {
+  acc = acc + cv;
+  return acc;
+}, 0);
 
 /*
 
@@ -89,6 +135,42 @@ Create these functions which accepts a number value and returns a number value:
   - `triple` triples the input 
   - `half` converts the value to half and return the integer value not decimal (use Math.round(21.5) => 21)
 */
+
+let values = [12, 25, 35, 64, 95, 75, 65, 35, 85, 75, 91];
+
+// `increment` adds one to the input value
+function increment(value) {
+  return value + 1;
+}
+let incrementMap = values.map(increment);
+
+// `double` doubles the input value
+function double(value) {
+  console.log(value * 2);
+}
+let doubleForEach = values.forEach(double);
+
+// `decrement` decrement 1 from the value 
+function decrement(value) {
+  return value - 1;
+}
+let decrementMap = values.map(decrement);
+
+// `triple` triples the input 
+function triple(value) {
+  console.log(value * 3);
+}
+let tripleForEach = values.forEach(triple);
+
+//`half` converts the value to half and return the integer value not decimal (use Math.round(21.5) => 21)
+function half(value) {
+  return Math.round(value / 2);
+}
+let halfMap = values.map(half);
+
+
+
+
 
 let pipeline = [
   increment,
